@@ -3,42 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Премиум Парикмахерская | Запись онлайн</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Премиум Салон Красоты | Запись онлайн</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Базовые настройки */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Типографика */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .gold-text {
+            color: #d4af37; /* Благородное золото */
         }
 
         /* Шапка */
         header {
-            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(18, 18, 18, 0.9);
-            position: fixed;
-            width: 100%;
-            top: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #e5b84d;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
             letter-spacing: 2px;
         }
 
@@ -51,107 +62,192 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        .hero h1 span {
-            color: #e5b84d;
+            animation: fadeInDown 1s ease-out;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #cccccc;
-            margin-bottom: 40px;
+            font-weight: 300;
             max-width: 600px;
+            margin-bottom: 40px;
+            color: #bbbbbb;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
-        /* Кнопка записи */
+        /* Кнопка */
         .btn {
             display: inline-block;
-            padding: 18px 40px;
-            background-color: #e5b84d;
-            color: #121212;
+            padding: 20px 50px;
+            background: linear-gradient(45deg, #d4af37, #f3e5ab);
+            color: #0f0f0f;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: 600;
             font-size: 1.1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(229, 184, 77, 0.4);
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            background-color: #f5c85c;
-            box-shadow: 0 6px 20px rgba(229, 184, 77, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
-        /* Услуги */
-        .services {
-            padding: 100px 20px;
+        /* Секции */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
             text-align: center;
-        }
-
-        .services h2 {
             font-size: 2.5rem;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
-        .services-grid {
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #d4af37;
+            margin: 20px auto 0;
+        }
+
+        /* Преимущества */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
+            gap: 40px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .service-card {
-            background-color: #1e1e1e;
-            padding: 40px 20px;
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: #1a1a1a;
             border-radius: 15px;
-            border: 1px solid #333;
             transition: 0.3s;
+            border: 1px solid #333;
         }
 
-        .service-card:hover {
-            border-color: #e5b84d;
-            transform: translateY(-5px);
+        .feature:hover {
+            border-color: #d4af37;
+            transform: translateY(-10px);
         }
 
-        .service-card h3 {
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Галерея */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 0.4s;
+            filter: grayscale(20%);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Услуги и Цены */
+        .services-list {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid #333;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .service-price {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card .price {
-            font-size: 2rem;
-            color: #e5b84d;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #aaaaaa;
+            color: #d4af37;
+            font-weight: 700;
         }
 
         /* Подвал */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #0a0a0a;
-            color: #666;
-            border-top: 1px solid #222;
+            padding: 50px 20px;
+            background-color: #050505;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
-      /* Адаптив для телефонов */
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптив */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            header { padding: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            section { padding: 60px 5%; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -162,36 +258,64 @@
     </header>
 
     <section class="hero">
-        <h1>Твой стиль начинается <span>здесь</span></h1>
-        <p>Профессиональные мастера, уютная атмосфера и онлайн-запись без звонков и ожиданий.</p>
+        <h1>Искусство быть <span class="gold-text">красивой</span></h1>
+        <p>Профессиональные мастера, премиальные материалы и уютная атмосфера. Запишитесь онлайн за 30 секунд.</p>
         <!-- ВАЖНО: ЗАМЕНИ ТВОЙ_БОТ НА ЮЗЕРНЕЙМ ТВОЕГО БОТА -->
-        <a href="https://t.me/STriGi987_bot" class="btn" target="_blank">Записаться онлайн</a>
+        <a href="https://t.me/ТВОЙ_БОТ" class="btn" target="_blank">Записаться онлайн</a>
     </section>
 
-    <section class="services" id="services">
-        <h2>Наши услуги</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Женская стрижка</h3>
-                <div class="price">от 40 BYN</div>
-                <p>Моделирование, мытье и укладка. Подберем идеальную форму под ваше лицо.</p>
+    <section>
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">✨</div>
+                <h3>Премиум качество</h3>
+                <p>Используем только лучшие материалы и современные техники.</p>
             </div>
-            <div class="service-card">
-                <h3>Окрашивание</h3>
-                <div class="price">от 80 BYN</div>
-                <p>Современные техники (AirTouch, шатуш, балаяж). Бережное отношение к волосам.</p>
+            <div class="feature">
+                <div class="feature-icon">⏱️</div>
+                <h3>Ценим ваше время</h3>
+                <p>Никаких задержек. Ваша запись строго по времени.</p>
             </div>
-            <div class="service-card">
-                <h3>Укладка</h3>
-                <div class="price">от 30 BYN</div>
-                <p>Вечерние или повседневные укладки. Идеально держится весь день.</p>
+            <div class="feature">
+                <div class="feature-icon">💎</div>
+                <h3>Индивидуальный подход</h3>
+                <p>Подберем идеальный образ, учитывая ваши черты лица.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Наши работы</h2>
+        <div class="gallery">
+            <!-- Можно заменить ссылки на реальные фото -->
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 1">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 2">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 3">
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-name">Женская стрижка (мытье, укладка)</span>
+                <span class="service-price">от 40 BYN</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Окрашивание (сложные техники)</span>
+                <span class="service-price">от 80 BYN</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Вечерняя укладка</span>
+                <span class="service-price">от 30 BYN</span>
             </div>
         </div>
     </section>
 
     <footer>
         <p>© 2026 Style Studio. Все права защищены.</p>
-        <p>г. Минск, ул. Примерная, 15</p>
+        <p>г. Минск, ул. Примерная, 15 | +375 (29) 123-45-67</p>
     </footer>
 
 </body>
