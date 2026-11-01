@@ -6,249 +6,41 @@
     <title>Премиум Салон Красоты | Запись онлайн</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Базовые настройки */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #0f0f0f;
-            color: #e0e0e0;
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Типографика */
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .gold-text {
-            color: #d4af37; /* Благородное золото */
-        }
-
-        /* Шапка */
-        header {
-            position: fixed;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 15, 15, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: #d4af37;
-            letter-spacing: 2px;
-        }
-
-        /* Главный экран */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            background-attachment: fixed;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin-bottom: 40px;
-            color: #bbbbbb;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        /* Кнопка */
-        .btn {
-            display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(45deg, #d4af37, #f3e5ab);
-            color: #0f0f0f;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            animation: fadeInUp 1s ease-out 0.6s both;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
-        }
-
-        /* Секции */
-        section {
-            padding: 100px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: #d4af37;
-            margin: 20px auto 0;
-        }
-
-        /* Преимущества */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature {
-            text-align: center;
-            padding: 30px;
-            background: #1a1a1a;
-            border-radius: 15px;
-            transition: 0.3s;
-            border: 1px solid #333;
-        }
-
-        .feature:hover {
-            border-color: #d4af37;
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .feature h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Галерея */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: 0.4s;
-            filter: grayscale(20%);
-        }
-
-        .gallery img:hover {
-            transform: scale(1.03);
-            filter: grayscale(0%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* Услуги и Цены */
-        .services-list {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 40px;
-            border: 1px solid #333;
-        }
-
-        .service-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #333;
-        }
-
-        .service-item:last-child {
-            border-bottom: none;
-        }
-
-        .service-name {
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
-
-        .service-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #d4af37;
-            font-weight: 700;
-        }
-
-        /* Подвал */
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #050505;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        footer p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        /* Анимации */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Адаптив */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; }
-            section { padding: 60px 5%; }
-            .section-title { font-size: 2rem; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #0f0f0f; color: #e0e0e0; font-family: 'Montserrat', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: #ffffff; }
+        .gold-text { color: #d4af37; }
+        header { position: fixed; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #d4af37; letter-spacing: 2px; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.9)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover; background-attachment: fixed; }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; animation: fadeInDown 1s ease-out; }
+        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 600px; margin-bottom: 40px; color: #bbbbbb; animation: fadeInUp 1s ease-out 0.3s both; }
+        
+        /* САМА КНОПКА */
+        .btn { display: inline-block; padding: 20px 50px; background: linear-gradient(45deg, #d4af37, #f3e5ab); color: #0f0f0f; text-decoration: none; font-weight: 600; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 50px; transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); animation: fadeInUp 1s ease-out 0.6s both; border: none; cursor: pointer; }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+        
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 2px; background: #d4af37; margin: 20px auto 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .feature { text-align: center; padding: 30px; background: #1a1a1a; border-radius: 15px; transition: 0.3s; border: 1px solid #333; }
+        .feature:hover { border-color: #d4af37; transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; margin-bottom: 20px; }
+        .feature h3 { font-size: 1.3rem; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .gallery img { width: 100%; height: 350px; object-fit: cover; border-radius: 10px; transition: 0.4s; filter: grayscale(20%); }
+        .gallery img:hover { transform: scale(1.03); filter: grayscale(0%); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .services-list { max-width: 800px; margin: 0 auto; background: #1a1a1a; border-radius: 15px; padding: 40px; border: 1px solid #333; }
+        .service-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #333; }
+        .service-item:last-child { border-bottom: none; }
+        .service-name { font-size: 1.2rem; font-weight: 400; }
+        .service-price { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #d4af37; font-weight: 700; }
+        footer { text-align: center; padding: 50px 20px; background-color: #050505; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        footer p { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1rem; } section { padding: 60px 5%; } .section-title { font-size: 2rem; } }
     </style>
 </head>
 <body>
@@ -260,8 +52,10 @@
     <section class="hero">
         <h1>Искусство быть <span class="gold-text">красивой</span></h1>
         <p>Профессиональные мастера, премиальные материалы и уютная атмосфера. Запишитесь онлайн за 30 секунд.</p>
-        <!-- ВАЖНО: ЗАМЕНИ ТВОЙ_БОТ НА ЮЗЕРНЕЙМ ТВОЕГО БОТА -->
-        <a href="https://t.me/ТВОЙ_БОТ" class="btn" target="_blank">Записаться онлайн</a>
+        
+        <!-- ВОТ ТУТ ТВОЙ БОТ -->
+        <a href="https://t.me/STriGi987_bot" class="btn" target="_blank">Записаться онлайн</a>
+        
     </section>
 
     <section>
@@ -288,7 +82,6 @@
     <section>
         <h2 class="section-title">Наши работы</h2>
         <div class="gallery">
-            <!-- Можно заменить ссылки на реальные фото -->
             <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 1">
             <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 2">
             <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Работа 3">
